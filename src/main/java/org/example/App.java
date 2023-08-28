@@ -43,7 +43,14 @@ public class App {
                     }
                     break;
                 case '4':
-                    System.out.println("Alternativ " + userChoice);
+                    // check if array holds values from alternative 1 before proceeding
+                    if (electricity.isArrayFilled(prices)) {
+                        electricity.bestLoadingHours(prices);
+
+
+                    } else {
+                        System.out.println("Du måste ange priserna i alternativ 1 innan du går vidare till detta alternativ");
+                    }
                     break;
                 case 'e':
                 case 'E':
