@@ -1,11 +1,13 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
         int[] prices = new int[24];
+        int[] testArr = {8, 5, 6, 7, 8};
         char userChoice;
 
         Scanner scanner = new Scanner(System.in);
@@ -14,6 +16,8 @@ public class App {
         do {
             electricity.printMenuOptions();
             userChoice = scanner.next().charAt(0); // gets the first character
+            Arrays.stream(prices).sorted();
+
 
             switch (userChoice) {
                 case '1':
@@ -30,7 +34,13 @@ public class App {
                     }
                     break;
                 case '3':
-                    System.out.println("Alternativ " + userChoice);
+                    // check if array holds values from alternative 1 before proceeding
+                    if (electricity.isArrayFilled(prices)) {
+                     electricity.sortPrices(prices);
+
+                    } else {
+                        System.out.println("Du måste ange priserna i alternativ 1 innan du går vidare till detta alternativ");
+                    }
                     break;
                 case '4':
                     System.out.println("Alternativ " + userChoice);
