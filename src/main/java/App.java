@@ -1,6 +1,3 @@
-package org.example;
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
@@ -48,6 +45,13 @@ public class App {
                     } else {
                         System.out.println("Du måste ange priserna i alternativ 1 innan du går vidare till detta alternativ");
                     }
+                    break;
+                case '5':
+
+                    ReadCSV readCSV = new ReadCSV();
+                    ReadCSV csvFileData = readCSV;
+                    csvFileData.displayCSVData();
+
                     break;
                 case 'e':
                 case 'E':
