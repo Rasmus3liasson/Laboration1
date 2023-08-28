@@ -7,7 +7,6 @@ public class App {
     public static void main(String[] args) {
 
         int[] prices = new int[24];
-        int[] testArr = {8, 5, 6, 7, 8};
         char userChoice;
 
         Scanner scanner = new Scanner(System.in);
@@ -16,8 +15,6 @@ public class App {
         do {
             electricity.printMenuOptions();
             userChoice = scanner.next().charAt(0); // gets the first character
-            Arrays.stream(prices).sorted();
-
 
             switch (userChoice) {
                 case '1':
