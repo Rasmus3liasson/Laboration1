@@ -102,7 +102,7 @@ public class Electricity {
             this.hour = (hour == 24) ? 0 : hour % 24; // convert to 0 for hour 24
             this.price = price;
         }
-        @Override
+
         public int compareTo(HourAndPrice compared) {
             return Integer.compare(this.price, compared.price);
         }

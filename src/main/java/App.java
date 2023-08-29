@@ -14,51 +14,47 @@ public class App {
             userChoice = scanner.next().charAt(0); // gets the first character
 
             switch (userChoice) {
+
                 case '1':
                     electricity.enterPricePerHour(prices, scanner);
                     break;
+
                 case '2':
-                    // check if array holds values from alternative 1 before proceeding
-                    if (electricity.isArrayFilled(prices)) {
-                        electricity.getLowestPrice(prices);
-                        electricity.getHighestPrice(prices);
-                        electricity.getAvergePrice(prices);
-                    } else {
-                        System.out.println("Du måste ange priserna i alternativ 1 innan du går vidare till detta alternativ");
-                    }
-                    break;
                 case '3':
-                    // check if array holds values from alternative 1 before proceeding
-                    if (electricity.isArrayFilled(prices)) {
-                     electricity.sortPrices(prices);
-
-                    } else {
-                        System.out.println("Du måste ange priserna i alternativ 1 innan du går vidare till detta alternativ");
-                    }
-                    break;
                 case '4':
+
                     // check if array holds values from alternative 1 before proceeding
                     if (electricity.isArrayFilled(prices)) {
-                        electricity.bestLoadingHours(prices);
-
-
+                        switch (userChoice) {
+                            case '2':
+                                electricity.getLowestPrice(prices);
+                                electricity.getHighestPrice(prices);
+                                electricity.getAvergePrice(prices);
+                                break;
+                            case '3':
+                                electricity.sortPrices(prices);
+                                break;
+                            case '4':
+                                electricity.bestLoadingHours(prices);
+                                break;
+                        }
                     } else {
+                        System.out.println("");
                         System.out.println("Du måste ange priserna i alternativ 1 innan du går vidare till detta alternativ");
                     }
                     break;
-                case '5':
 
+                case '5':
                     ReadCSV readCSV = new ReadCSV();
                     ReadCSV csvFileData = readCSV;
                     csvFileData.displayCSVData();
-
                     break;
                 case 'e':
                 case 'E':
                     System.out.println("Avslutar programmet.");
                     break;
                 default:
-                    System.out.println("Inget giltigt val. Försök igen.");
+                    System.out.println("Inget giltigt alternative. Försök igen.");
                     break;
             }
         } while (userChoice != 'e' && userChoice != 'E');
