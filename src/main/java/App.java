@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -5,9 +6,20 @@ public class App {
 
         int[] prices = new int[24];
         char userChoice;
+        boolean isUserData = false;
 
         Scanner scanner = new Scanner(System.in);
         Electricity electricity = new Electricity();
+
+        ReadCSV readCSV = new ReadCSV();
+        List<HourAndPrice> csvData = readCSV.getCSVData();
+
+        //sets prices array to csv data if user haven't entered own data
+        if (!electricity.isArrayFilled(prices)) {
+            for (HourAndPrice price : csvData) {
+                prices[price.getHour()] = price.getPrice();
+            }
+        }
 
         do {
             electricity.printMenuOptions();
@@ -17,19 +29,24 @@ public class App {
 
                 case '1':
                     electricity.enterPricePerHour(prices, scanner);
+                    isUserData=true;
                     break;
 
                 case '2':
                 case '3':
                 case '4':
 
-                    // check if array holds values from alternative 1 before proceeding
+
                     if (electricity.isArrayFilled(prices)) {
+
+                        // check if array holds values from alternative 1 or the csv data
+
+                        System.out.println(!isUserData ? "\nDenna data kommer från CSV-filen." : "");
                         switch (userChoice) {
                             case '2':
                                 electricity.getLowestPrice(prices);
                                 electricity.getHighestPrice(prices);
-                                electricity.getAvergePrice(prices);
+                                electricity.getAveragePrice(prices);
                                 break;
                             case '3':
                                 electricity.sortPrices(prices);
@@ -38,23 +55,19 @@ public class App {
                                 electricity.bestLoadingHours(prices);
                                 break;
                         }
-                    } else {
-                        System.out.println("");
-                        System.out.println("Du måste ange priserna i alternativ 1 innan du går vidare till detta alternativ");
                     }
                     break;
 
                 case '5':
-                    ReadCSV readCSV = new ReadCSV();
-                    ReadCSV csvFileData = readCSV;
-                    csvFileData.displayCSVData();
+                    readCSV.displayCSVData();
                     break;
                 case 'e':
                 case 'E':
-                    System.out.println("Avslutar programmet.");
+
+                    System.out.println("\nAvslutar programmet.");
                     break;
                 default:
-                    System.out.println("Inget giltigt alternative. Försök igen.");
+                    System.out.println("\nInget giltigt alternativ. Försök igen.");
                     break;
             }
         } while (userChoice != 'e' && userChoice != 'E');

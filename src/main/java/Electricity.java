@@ -16,10 +16,10 @@ public class Electricity {
         System.out.println("4. Bästa Laddningstid (4h)");
         System.out.println("5. Visa generella priser mellan olika timmar");
         System.out.println("e. Avsluta");
-        System.out.print("Välj ett alternativ: ");
+        System.out.print("\nVälj ett alternativ: ");
     }
     public void enterPricePerHour(int[] prices, Scanner scanner) {
-        System.out.println("Ange priserna mellan timmarna i öre/kWh nedan " + "\u2193");
+        System.out.println("\nAnge priserna mellan timmarna i öre/kWh nedan " + "\u2193");
         for (int i = 0; i < 24; i++) {
             int startHour = i;
             int endHour = (i + 1) % 24;
@@ -58,7 +58,7 @@ public class Electricity {
 
         System.out.println("Högsta Kostnaden: " + maxValue + " öre/kWh");
     }
-    public void getAvergePrice(int [] array){
+    public void getAveragePrice(int [] array){
 
         int sumOfPrices = 0;
         for (int price : array) {
@@ -91,19 +91,6 @@ public class Electricity {
 
     }
 
-    private static class HourAndPrice implements Comparable<HourAndPrice> {
-        int hour;
-        int price;
-
-        public HourAndPrice(int hour, int price) {
-            this.hour = (hour == 24) ? 0 : hour % 24; // convert to 0 for hour 24
-            this.price = price;
-        }
-
-        public int compareTo(HourAndPrice compared) {
-            return Integer.compare(this.price, compared.price);
-        }
-    }
 
     public void bestLoadingHours(int[] array) {
         int startHour = 0;
