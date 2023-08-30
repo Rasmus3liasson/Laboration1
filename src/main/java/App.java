@@ -29,7 +29,7 @@ public class App {
 
                 case '1':
                     electricity.enterPricePerHour(prices, scanner);
-                    isUserData=true;
+                    isUserData = true;
                     break;
 
                 case '2':
@@ -38,9 +38,7 @@ public class App {
 
 
                     if (electricity.isArrayFilled(prices)) {
-
                         // check if array holds values from alternative 1 or the csv data
-
                         System.out.println(!isUserData ? "\nDenna data kommer från CSV-filen." : "");
                         switch (userChoice) {
                             case '2':

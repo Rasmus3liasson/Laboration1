@@ -1,6 +1,6 @@
 import java.text.DecimalFormat;
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
 
 
 public class Electricity {
@@ -18,6 +18,7 @@ public class Electricity {
         System.out.println("e. Avsluta");
         System.out.print("\nVälj ett alternativ: ");
     }
+
     public void enterPricePerHour(int[] prices, Scanner scanner) {
         System.out.println("\nAnge priserna mellan timmarna i öre/kWh nedan " + "\u2193");
         for (int i = 0; i < 24; i++) {
@@ -28,7 +29,8 @@ public class Electricity {
             prices[i] = scanner.nextInt();
         }
     }
-    public boolean isArrayFilled(int [] array){
+
+    public boolean isArrayFilled(int[] array) {
         for (int price : array) {
             if (price == 0) {
                 return false;
@@ -37,7 +39,8 @@ public class Electricity {
         return true;
 
     }
-    public void getLowestPrice(int [] array){
+
+    public void getLowestPrice(int[] array) {
         int minValue = array[0];
 
         for (int price : array) {
@@ -47,7 +50,8 @@ public class Electricity {
 
         System.out.println("Minsta Kostnaden: " + minValue + " öre/kWh");
     }
-    public void getHighestPrice(int [] array){
+
+    public void getHighestPrice(int[] array) {
         int maxValue = array[0];
 
         for (int price : array) {
@@ -58,7 +62,8 @@ public class Electricity {
 
         System.out.println("Högsta Kostnaden: " + maxValue + " öre/kWh");
     }
-    public void getAveragePrice(int [] array){
+
+    public void getAveragePrice(int[] array) {
 
         int sumOfPrices = 0;
         for (int price : array) {
@@ -72,6 +77,7 @@ public class Electricity {
 
         System.out.println("Medelvärde: " + averagePriceFormatted + " öre/kWh");
     }
+
     public void sortPrices(int[] prices) {
         HourAndPrice[] hourPriceCombined = new HourAndPrice[prices.length];
 
