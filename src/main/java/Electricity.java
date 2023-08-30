@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -127,22 +124,6 @@ public class Electricity {
         System.out.println(String.format("Genomsnitts kostnad per timme kommer att bli : %.2f öre/kWh", lowestPrice));
     }
 
-    public static class CSVReader {
-        public static void main(String[] args) {
-            String filePath = "folderName/priser.csv"; // Replace 'folderName' with the actual folder name
-            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] data = line.split(",");
-                    String hour = data[0];
-                    String price = data[1];
-                    System.out.println("Hour: " + hour + ", Price: " + price);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
 
 
