@@ -5,9 +5,9 @@ import java.util.List;
 
 public class ReadCSV {
 
-    private static String filePath = "csv/priser.csv";
 
-    public List<HourAndPrice> getCSVData() {
+    private static List<HourAndPrice> readCSVFile() {
+        String filePath = "csv/priser.csv";
 
         List<HourAndPrice> csvDataList = new ArrayList<>();
 
@@ -27,24 +27,34 @@ public class ReadCSV {
         }
 
         return csvDataList;
+
+    }
+
+    public List<HourAndPrice> getCSVData() {
+        return readCSVFile();
+
     }
 
     public void displayCSVData() {
+        List<HourAndPrice> csvData = readCSVFile();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String data;
+        for (HourAndPrice data : csvData) {
+            int startHour = data.getHour();
+            int endHour = (startHour + 1) % 24;
 
-            System.out.println("");
-            while ((data = br.readLine()) != null) {
-                String[] fileData = data.split(",");
-                String hour = fileData[0];
-                String price = fileData[1];
-
-                System.out.println("\nKlockslag: " + hour + ", \nkostnad: " + price + " öre/kWh");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("\nKlockslag: " + formatTime(startHour, endHour) + "\nKostnad: " + data.getPrice() + " öre/kWh");
         }
     }
 
+    private String formatTime(int startHour, int endHour) {
+        if (startHour == 23 && endHour == 0) {
+            return "23-00";
+        }
+
+        String addedZeroToStartHour = (startHour < 10) ? "0" + startHour : String.valueOf(startHour);
+        String addedZeroToEndHour = (endHour < 10) ? "0" + endHour : String.valueOf(endHour);
+
+        return addedZeroToStartHour + "-" + addedZeroToEndHour;
+
+    }
 }

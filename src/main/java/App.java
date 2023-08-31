@@ -40,6 +40,7 @@ public class App {
                     if (electricity.isArrayFilled(prices)) {
                         // check if array holds values from alternative 1 or the csv data
                         System.out.println(!isUserData ? "\nDenna data kommer från CSV-filen." : "");
+                        System.out.println("");
                         switch (userChoice) {
                             case '2':
                                 electricity.getLowestPrice(prices);
