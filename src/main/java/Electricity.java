@@ -49,6 +49,18 @@ public class Electricity {
         }
 
         System.out.println("Minsta Kostnaden: " + minValue + " öre/kWh");
+
+        int hour = 0;
+        for (int price : array) {
+            if (price == minValue) {
+                int startHour = hour;
+                int endHour = (hour + 1) % 24;
+
+                // inside loop if they are same price on more the one occasion
+                System.out.println(String.format("under %02d-%02d", startHour, endHour));
+            }
+            hour++;
+        }
     }
 
     public void getHighestPrice(int[] array) {
@@ -61,6 +73,18 @@ public class Electricity {
         }
 
         System.out.println("Högsta Kostnaden: " + maxValue + " öre/kWh");
+
+        int hour = 0;
+        for (int price : array) {
+            if (price == maxValue) {
+                int startHour = hour;
+                int endHour = (hour + 1) % 24;
+
+                // inside loop if they are same price on more the one occasion
+                System.out.println(String.format("under %02d-%02d", startHour, endHour));
+            }
+            hour++;
+        }
     }
 
     public void getAveragePrice(int[] array) {
