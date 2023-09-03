@@ -53,11 +53,10 @@ public class Electricity {
         int hour = 0;
         for (int price : array) {
             if (price == minValue) {
-                int startHour = hour;
                 int endHour = (hour + 1) % 24;
 
                 // inside loop if they are same price on more the one occasion
-                System.out.println(String.format("under %02d-%02d", startHour, endHour));
+                System.out.println(String.format("under %02d-%02d", hour, endHour));
             }
             hour++;
         }
@@ -77,11 +76,10 @@ public class Electricity {
         int hour = 0;
         for (int price : array) {
             if (price == maxValue) {
-                int startHour = hour;
                 int endHour = (hour + 1) % 24;
 
                 // inside loop if they are same price on more the one occasion
-                System.out.println(String.format("under %02d-%02d", startHour, endHour));
+                System.out.println(String.format("under %02d-%02d", hour, endHour));
             }
             hour++;
         }

@@ -46,6 +46,7 @@ public class ReadCSV {
         }
     }
 
+    //helper function for formatting
     private String formatTime(int startHour, int endHour) {
         if (startHour == 23 && endHour == 0) {
             return "23-00";
