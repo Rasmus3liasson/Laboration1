@@ -124,21 +124,21 @@ public class Electricity {
 
     public void bestLoadingHours(int[] array) {
         int startHour = 0;
-        double lowestPrice = Double.MAX_VALUE;
+        double averagePrice = Double.MAX_VALUE;
 
         for (int i = 0; i <= array.length - 4; i++) { // (-4) to make sure there will always be 4 hours
             double totalPrice = array[i] + array[i + 1] + array[i + 2] + array[i + 3];
-            double averagePrice = totalPrice / 4;
+            double calculatedAveragePrice = totalPrice / 4;
 
-            if (averagePrice < lowestPrice) {
+            if (calculatedAveragePrice < averagePrice) {
                 startHour = i;
-                lowestPrice = averagePrice;
+                averagePrice = calculatedAveragePrice;
             }
         }
 
         System.out.println("Bästa laddningstid under 4h är:");
         System.out.println(String.format("Börja ladda kl %02d-%02d för att få lägst totalpris.", startHour, startHour + 4));
-        System.out.println(String.format("Genomsnitts kostnad per timme kommer att bli : %.2f öre/kWh", lowestPrice));
+        System.out.println(String.format("Genomsnitts kostnad per timme kommer att bli : %.2f öre/kWh", averagePrice));
     }
 
 }
